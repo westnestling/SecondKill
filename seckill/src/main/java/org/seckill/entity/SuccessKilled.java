@@ -14,6 +14,7 @@ public class SuccessKilled {
 	private short state;
 	private Date createTime;
 	private Seckill seckill;
+
 	/**
 	 * @return the seckillId
 	 */
@@ -82,13 +83,16 @@ public class SuccessKilled {
 	}
 
 	/**
-	 * @param seckill the seckill to set
+	 * @param seckill
+	 *            the seckill to set
 	 */
 	public void setSeckill(Seckill seckill) {
 		this.seckill = seckill;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -96,6 +100,5 @@ public class SuccessKilled {
 		return "SuccessKilled [seckillId=" + seckillId + ", userPhone=" + userPhone + ", state=" + state
 				+ ", createTime=" + createTime + ", seckill=" + seckill + "]";
 	}
-
 
 }
