@@ -3,6 +3,7 @@ package org.seckill.dao;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.seckill.entity.Seckill;
 
 /**
@@ -17,7 +18,7 @@ public interface SeckillDao {
 	 * 
 	 * @return 如果影响行数>1,表示更新的行数记录，0没有成功
 	 */
-	int reduceNumber(long seckillId, Date killTime);
+	int reduceNumber(@Param("seckillId")long seckillId,@Param("killTime") Date killTime);
 
 	/*
 	 * 根据id查询秒杀对象
@@ -26,6 +27,11 @@ public interface SeckillDao {
 
 	/*
 	 * 根据偏移量查询商品列表
+	 * 
 	 */
-	List<Seckill> queryAll(int offset, int limit);
+	//org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'offset' not found. Available parameters are [0, 1, param1, param2]
+	//Caused by: org.apache.ibatis.binding.BindingException: Parameter 'offset' not found. Available parameters are [0, 1, param1, param2]
+	//java没有保存形参的记录，queryAll(int offset, int limit)会变为——>queryAll(arg0，arg1)
+
+	List<Seckill> queryAll(@Param("offset") int offset,@Param("limit") int limit);
 }
