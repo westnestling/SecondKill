@@ -33,10 +33,12 @@ public class Exposer {
 	 * @param now
 	 * @param start
 	 * @param end
+	 * @param l 
 	 */
-	public Exposer(boolean exposed, long now, long start, long end) {
+	public Exposer(boolean exposed, long seckillId, long now, long start, long end) {
 		super();
 		this.exposed = exposed;
+		this.seckillId=seckillId;
 		this.now = now;
 		this.start = start;
 		this.end = end;
