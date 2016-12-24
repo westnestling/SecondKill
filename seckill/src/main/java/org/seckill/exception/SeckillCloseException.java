@@ -1,10 +1,11 @@
 package org.seckill.exception;
+
 /**
  * project:seckill
- * @author Daley 上午9:44:08 2016年12月22日 2016
- * 秒杀关闭异常
+ * 
+ * @author Daley 上午9:44:08 2016年12月22日 2016 秒杀关闭异常
  */
-public class SeckillCloseException extends RuntimeException{
+public class SeckillCloseException extends RuntimeException {
 	/**
 	 * 
 	 */

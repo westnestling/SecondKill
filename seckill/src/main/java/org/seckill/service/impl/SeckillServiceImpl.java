@@ -31,7 +31,7 @@ import org.springframework.util.DigestUtils;
 public class SeckillServiceImpl implements SeckillService {
 	// 日志对象
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	//注入Service依赖
+	// 注入Service依赖
 	@Autowired
 	private SeckillDao seckillDao;
 	@Autowired
@@ -41,6 +41,7 @@ public class SeckillServiceImpl implements SeckillService {
 
 	/**
 	 * 查询单个所有记录
+	 * 
 	 * @see org.seckill.service.SeckillService#getSeckillList()
 	 */
 	public List<Seckill> getSeckillList() {
@@ -49,6 +50,7 @@ public class SeckillServiceImpl implements SeckillService {
 
 	/**
 	 * 查询单个秒杀记录
+	 * 
 	 * @see org.seckill.service.SeckillService#getById(long)
 	 */
 	public Seckill getById(long seckillId) {
@@ -57,6 +59,7 @@ public class SeckillServiceImpl implements SeckillService {
 
 	/**
 	 * 秒杀开启时 输出秒杀接口的地址 否则输出系统时间和秒杀时间
+	 * 
 	 * @see org.seckill.service.SeckillService#exportSeckillUrl(long)
 	 */
 	public Exposer exportSeckillUrl(long seckillId) {
@@ -76,9 +79,12 @@ public class SeckillServiceImpl implements SeckillService {
 
 	/**
 	 * 执行秒杀操作
+	 * 
 	 * @see org.seckill.service.SeckillService#executeSeckill(long, long,
-	 * java.lang.String)
+	 *      java.lang.String)
 	 */
+	// 使用注解控制事务方法的优点 1.开发团队达成一致的约定，明确标注事务方法的编程风格 2.保证事务方法的执行时间尽可能短，不要穿插其他的网络操作
+	// 3.不是所有的方法都需要事务，如只有一条修改操作，只读操作不需要事务控制
 	@Transactional
 	public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
 			throws SeckillException, RepeatKillException, SeckillException {

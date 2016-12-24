@@ -1,10 +1,12 @@
 package org.seckill.exception;
+
 /**
  * project:seckill
+ * 
  * @author Daley 上午9:46:16 2016年12月22日 2016
  * 
  */
-public class SeckillException extends RuntimeException{
+public class SeckillException extends RuntimeException {
 
 	/**
 	 * @param message
@@ -22,5 +24,5 @@ public class SeckillException extends RuntimeException{
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 }

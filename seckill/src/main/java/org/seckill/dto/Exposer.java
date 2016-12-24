@@ -147,4 +147,13 @@ public class Exposer {
 		this.end = end;
 	}
 
+	/**
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Exposer [exposed=" + exposed + ", md5=" + md5 + ", seckillId=" + seckillId + ", now=" + now + ", start="
+				+ start + ", end=" + end + "]";
+	}
+
 }

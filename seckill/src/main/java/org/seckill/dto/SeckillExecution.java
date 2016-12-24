@@ -101,4 +101,14 @@ public class SeckillExecution {
 	public void setSuccessKilled(SuccessKilled successKilled) {
 		this.successKilled = successKilled;
 	}
+
+	/**
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "SeckillExecution [seckillId=" + seckillId + ", state=" + state + ", stateInfo=" + stateInfo
+				+ ", successKilled=" + successKilled + "]";
+	}
+
 }

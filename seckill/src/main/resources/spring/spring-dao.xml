@@ -25,7 +25,7 @@
 		<!-- 获取连接失败重试次数 -->
 		<property name="acquireRetryAttempts" value="2"></property>
 	</bean>
-	
+
 	<!-- 约定大于配置 -->
 	<!-- 配置sqlSessionFactory对象 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
