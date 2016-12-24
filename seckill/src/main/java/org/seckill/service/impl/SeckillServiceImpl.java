@@ -16,6 +16,9 @@ import org.seckill.exception.SeckillException;
 import org.seckill.service.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 /**
@@ -24,35 +27,36 @@ import org.springframework.util.DigestUtils;
  * @author Daley 上午9:58:40 2016年12月22日 2016
  * 
  */
+@Service
 public class SeckillServiceImpl implements SeckillService {
 	// 日志对象
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	//注入Service依赖
+	@Autowired
 	private SeckillDao seckillDao;
+	@Autowired
 	private SuccessKilledDao successKilledDao;
 	// 用于混淆md5
 	private final String slat = "afghieuhfidda4nhnb haldvianlo";
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
+	 * 查询单个所有记录
 	 * @see org.seckill.service.SeckillService#getSeckillList()
 	 */
 	public List<Seckill> getSeckillList() {
 		return seckillDao.queryAll(0, 4);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
+	 * 查询单个秒杀记录
 	 * @see org.seckill.service.SeckillService#getById(long)
 	 */
 	public Seckill getById(long seckillId) {
 		return seckillDao.queryById(seckillId);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
+	 * 秒杀开启时 输出秒杀接口的地址 否则输出系统时间和秒杀时间
 	 * @see org.seckill.service.SeckillService#exportSeckillUrl(long)
 	 */
 	public Exposer exportSeckillUrl(long seckillId) {
@@ -70,12 +74,12 @@ public class SeckillServiceImpl implements SeckillService {
 		return new Exposer(true, md5, seckillId);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
+	 * 执行秒杀操作
 	 * @see org.seckill.service.SeckillService#executeSeckill(long, long,
 	 * java.lang.String)
 	 */
+	@Transactional
 	public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
 			throws SeckillException, RepeatKillException, SeckillException {
 		// 验证md5是否可用
