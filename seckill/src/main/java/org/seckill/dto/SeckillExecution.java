@@ -24,7 +24,7 @@ public class SeckillExecution {
 	 */
 	public SeckillExecution(long seckillId, int state, String stateInfo) {
 		super();
-		this.seckillId = seckillId;
+		this.seckillId  = seckillId;
 		this.state = getState();
 		this.stateInfo = getStateInfo();
 	}
@@ -40,6 +40,15 @@ public class SeckillExecution {
 		this.seckillId = seckillId;
 		this.stateInfo = statEnum.getStateInfo();
 		this.successKilled = successKilled;
+	}
+
+	/**
+	 * @param seckillId2
+	 * @param repeatKill
+	 */
+	public SeckillExecution(Long seckillId2, SeckillStatEnum statEnum) {
+		this.seckillId=seckillId2;
+		this.stateInfo=statEnum.getStateInfo();
 	}
 
 	/**
