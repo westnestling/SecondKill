@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/seckill") // 模块/资源/{id}/细分
+@RequestMapping("") // 模块/资源/{id}/细分
 public class SeckillController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Autowired
