@@ -68,7 +68,7 @@ public class SeckillServiceTest {
 	@Test
 	public void testExecuteSeckill() {
 		long id = 1000;
-		long phone = 23445467857L;
+		long phone = 53445467857L;
 		String md5 = "27435e6a36e7580a6775a05f4462459f";
 		SeckillExecution seckillExecution = seckillService.executeSeckill(id, phone, md5);
 		logger.info("seckillExecution= {}", seckillExecution);
