@@ -53,6 +53,8 @@ var seckill = {
                                 var stateInfo = killResult['stateInfo'];
                                 //显示秒杀结果
                                 node.html('<span class="label label-success">' + stateInfo + '</span>');
+                            }else{
+                                node.html('<span class="label label-success">重复秒杀</span>');
                             }
                         });
                     });
