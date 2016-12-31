@@ -145,11 +145,13 @@
 			<version>2.8.1</version>
 		</dependency>
 		<!-- protostuff序列化依赖 -->
+		<!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-core -->
 		<dependency>
-			<groupId>com.dyuproject.protostuff</groupId>
+			<groupId>io.protostuff</groupId>
 			<artifactId>protostuff-core</artifactId>
-			<version>1.0.12</version>
+			<version>1.5.2</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-runtime -->
 		<dependency>
 			<groupId>io.protostuff</groupId>
