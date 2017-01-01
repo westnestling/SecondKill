@@ -158,7 +158,13 @@
 			<artifactId>protostuff-runtime</artifactId>
 			<version>1.5.2</version>
 		</dependency>
-
+	<!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+<dependency>
+    <groupId>commons-collections</groupId>
+    <artifactId>commons-collections</artifactId>
+    <version>3.2.2</version>
+</dependency>
+	
 	</dependencies>
 	<build>
 		<finalName>seckill</finalName>

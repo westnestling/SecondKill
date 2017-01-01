@@ -2,6 +2,7 @@ package org.seckill.dao;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.seckill.entity.Seckill;
@@ -34,4 +35,9 @@ public interface SeckillDao {
 	//java没有保存形参的记录，queryAll(int offset, int limit)会变为——>queryAll(arg0，arg1)
 
 	List<Seckill> queryAll(@Param("offset") int offset,@Param("limit") int limit);
+	
+	/**
+	 * 使用存储过程执行秒杀
+	 */
+	void killByProcedure(Map<String,Object> paramMap);
 }
