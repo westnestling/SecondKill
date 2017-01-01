@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.seckill.dao.SeckillDao;
 import org.seckill.dao.SuccessKilledDao;
+import org.seckill.dao.cache.RedisDao;
 import org.seckill.dto.Exposer;
 import org.seckill.dto.SeckillExecution;
 import org.seckill.entity.Seckill;
@@ -29,6 +30,7 @@ import org.springframework.util.DigestUtils;
  */
 @Service
 public class SeckillServiceImpl implements SeckillService {
+	
 	// 日志对象
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	// 注入Service依赖
@@ -36,6 +38,8 @@ public class SeckillServiceImpl implements SeckillService {
 	private SeckillDao seckillDao;
 	@Autowired
 	private SuccessKilledDao successKilledDao;
+	@Autowired
+	private RedisDao redisDao;
 	// 用于混淆md5
 	private final String slat = "afghieuhfidda4nhnb haldvianlo";
 
@@ -63,10 +67,18 @@ public class SeckillServiceImpl implements SeckillService {
 	 * @see org.seckill.service.SeckillService#exportSeckillUrl(long)
 	 */
 	public Exposer exportSeckillUrl(long seckillId) {
-		//优化点 ： 缓存优化
-		Seckill seckill = seckillDao.queryById(seckillId);
-		if (seckill == null) {
-			return new Exposer(false, seckillId);
+		//优化点 ： 缓存优化 超时的基础上维护一致性
+		//1:访问Redis
+		Seckill seckill=redisDao.getSeckill(seckillId);
+		if(seckill == null){
+			//访问数据库
+			seckill = seckillDao.queryById(seckillId);
+			if(seckill==null){
+				return new Exposer(false,seckillId);
+			}else{
+				//放入redis
+				redisDao.putSeckill(seckill);
+			}
 		}
 		Date startTime = seckill.getStartTime();
 		Date endTime = seckill.getEndTime();
