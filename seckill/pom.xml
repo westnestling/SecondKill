@@ -15,7 +15,6 @@
 			<version>4.12</version>
 		</dependency>
 
-
 		<!-- 日志 -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -39,6 +38,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.40</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- 数据库链接池 -->
@@ -158,13 +158,13 @@
 			<artifactId>protostuff-runtime</artifactId>
 			<version>1.5.2</version>
 		</dependency>
-	<!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
-<dependency>
-    <groupId>commons-collections</groupId>
-    <artifactId>commons-collections</artifactId>
-    <version>3.2.2</version>
-</dependency>
-	
+		<!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>seckill</finalName>
